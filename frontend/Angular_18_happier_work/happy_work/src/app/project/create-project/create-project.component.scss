@@ -1,0 +1,125 @@
+.container {
+    position: relative;
+    font-family: Arial, sans-serif;
+
+    /* Overlay Background */
+    .overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      z-index: 10;
+    }
+
+    /* Modal Dialog */
+    .modal {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: #fff;
+      border-radius: 8px;
+      box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.2);
+      width: 1000px;
+      z-index: 20;
+
+      /* Header */
+      .modal-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 16px 24px;
+        border-bottom: 1px solid #eee;
+
+        h3 {
+          margin: 0;
+          font-size: 20px;
+        }
+
+        .close-button {
+          background: none;
+          border: none;
+          font-size: 18px;
+          cursor: pointer;
+
+          &:hover {
+            color: #f5c518;
+          }
+        }
+      }
+
+      /* Body */
+      .modal-body {
+        padding: 24px;
+
+        form {
+          .form-group {
+            margin-bottom: 20px;
+
+            label {
+              display: block;
+              font-size: 14px;
+              font-weight: bold;
+              margin-bottom: 8px;
+
+              span {
+                color: red;
+              }
+            }
+
+            input,
+            textarea,
+            select {
+              width: 97%;
+              padding: 10px 12px;
+              font-size: 14px;
+              border: 1px solid #ccc;
+              border-radius: 4px;
+
+              &:focus {
+                border-color: #f5c518;
+                outline: none;
+              }
+            }
+
+            textarea {
+              resize: none;
+              height: 80px;
+            }
+          }
+
+          .error-text {
+            color: red;
+            font-size: 14px;
+            padding-left: 10px;
+          }
+
+          .form-actions {
+            display: flex;
+            justify-content: flex-end;
+
+            .create-button {
+              background-color: #f5c518;
+              color: #ffffff;
+              border: none;
+              padding: 10px 20px;
+              font-size: 14px;
+              font-weight: bold;
+              border-radius: 4px;
+              cursor: pointer;
+
+              &:hover {
+                background-color: #e6b10f;
+              }
+
+              &:disabled {
+                background-color: #cbcbcb;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
