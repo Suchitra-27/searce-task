@@ -1,0 +1,70 @@
+<div class="container">
+    <!-- Overlay Background -->
+    <div class="overlay"></div>
+  
+    <!-- Modal Dialog -->
+    <div class="modal">
+      <div class="modal-header">
+        <h3>Create Position</h3>
+        <button class="close-button" (click)="close()">✖</button>
+      </div>
+      <div class="modal-body">
+        <form [formGroup]="createPositionForm">
+          <!-- Position Designation -->
+          <div class="form-group">
+            <label for="designation">Designation <span>*</span></label>
+            <input type="text" id="designation" placeholder="Enter designation" formControlName="designation" />
+            <span class="error-text" *ngIf="getValidationErrors('designation') && getRequiredError('designation')">
+              Designation is required.
+            </span>
+          </div>
+  
+          <!-- Project ID -->
+          <!-- <div class="form-group">
+            <label for="project-id">Project ID <span>*</span></label>
+            <input type="text" id="project-id" placeholder="Enter project ID" formControlName="project_id" />
+            <span class="error-text" *ngIf="getValidationErrors('project_id') && getRequiredError('project_id')">
+              Project ID is required.
+            </span>
+          </div> -->
+  
+          <!-- Department Selection -->
+          <div class="form-group">
+            <label for="department-id">Department <span>*</span></label>
+            <select id="department-id" formControlName="department_id">
+              <option value="" disabled>Select a department</option>
+              <option *ngFor="let department of departments" [value]="department.id">{{ department.name }}</option>
+            </select>
+            <span class="error-text" *ngIf="getValidationErrors('department_id') && getRequiredError('department_id')">
+              Department is required.
+            </span>
+          </div>
+  
+          <!-- Budget -->
+          <div class="form-group">
+            <label for="budget">Budget <span>*</span></label>
+            <input type="number" id="budget" placeholder="Enter budget" formControlName="budget" />
+            <span class="error-text" *ngIf="getValidationErrors('budget') && getRequiredError('budget')">
+              Budget is required.
+            </span>
+          </div>
+  
+          <!-- Location -->
+          <div class="form-group">
+            <label for="location">Location <span>*</span></label>
+            <input type="text" id="location" placeholder="Enter location" formControlName="location" />
+            <span class="error-text" *ngIf="getValidationErrors('location') && getRequiredError('location')">
+              Location is required.
+            </span>
+          </div>
+  
+          <!-- Create Button -->
+          <div class="form-actions text-center">
+            <button type="submit" class="create-button" (click)="createPosition()"
+              [disabled]="createPositionForm.invalid">Create</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  
