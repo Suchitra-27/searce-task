@@ -1,0 +1,49 @@
+<div class="container">
+  <!-- Sidebar -->
+  <div class="sidebar">
+    <!-- Sidebar Content -->
+    <div class="logo">
+      <!-- Add a logo or icon -->
+      <img src="path-to-logo.png" alt="Logo" />
+    </div>
+  </div>
+
+  <!-- Main Content -->
+  <div class="body">
+    <div class="main-content">
+      <!-- Page Title and Add Button -->
+      <span class="page-title">
+        <p>Planning Projects</p>
+        <button class="add-button" (click)="openAddProject()">+</button>
+      </span>
+
+      <!-- Project List -->
+      <div class="project-list">
+        <div
+          class="project-card"
+          *ngFor="let project of projects"
+          (click)="openPositionDetails(project.id)"
+        >
+          <!-- Card Header -->
+          <div class="card-header">
+            <h3>{{ project.name }}</h3>
+            <p>{{ project.project_description }}</p>
+          </div>
+
+          <!-- Card Details -->
+          <div class="details">
+            <div class="detail">
+              <p><strong>Budget:</strong> {{ project.project_budget }}</p>
+            </div>
+            <div class="detail">
+              <p><strong>Total No. of Positions:</strong> {{ project.position_count }}</p>
+            </div>
+            <div class="detail">
+              <p><strong>Co-planners:</strong> {{ project.co_planner }}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
