@@ -4,7 +4,7 @@
     <!-- Sidebar Content -->
     <div class="logo">
       <!-- Add a logo or icon -->
-      <img src="path-to-logo.png" alt="Logo" />
+      <img src="assets/eworker.png" alt="Logo" />
     </div>
   </div>
   
@@ -107,6 +107,28 @@
             </div>
   
             <!-- Right Section: Budget Chart -->
+            <div class="budget-section">
+              <div class="budget-header">
+                <h3>Budget</h3>
+                <button class="edit-button">Edit</button>
+              </div>
+              <div class="chart-container">
+                <canvas id="budgetChart" style="width: 100%; height: 400px;"></canvas>
+              </div>
+              <div class="chart-legend">
+                <div class="legend-item" *ngFor="let item of chartData">
+                  <div class="legend-color" [style.background-color]="item.color"></div>
+                  <span>{{ item.label }}</span>
+                  <span class="legend-percentage">{{ item.percentage }}%</span>
+                </div>
+              </div>
+              <div class="separator"></div>
+              <div class="budget-summary">
+                <span class="total_budget"><p>Total budget:</p><p>₹ 2 Cr</p></span>
+                <span><p>Used:</p><p>₹ 1.5 Cr</p></span>
+                <span><p>Left:</p><p>₹ 50 L</p></span>
+              </div>
+            </div>
           </div>
         </div>
       </div>
