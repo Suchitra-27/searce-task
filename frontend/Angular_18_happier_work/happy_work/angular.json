@@ -35,8 +35,10 @@
             "assets": [
               {
                 "glob": "**/*",
-                "input": "public"
+                "input": "src/assets",
+                "output": "assets"
               }
+              
             ],
             "styles": [
               "@angular/material/prebuilt-themes/azure-blue.css",
@@ -101,8 +103,10 @@
             "assets": [
               {
                 "glob": "**/*",
-                "input": "public"
+                "input": "src/assets",
+                "output": "assets"
               }
+              
             ],
             "styles": [
               "@angular/material/prebuilt-themes/azure-blue.css",
