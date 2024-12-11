@@ -1,0 +1,142 @@
+.container {
+  display: flex;
+  height: 100vh;
+  background-color: #f8f8f8;
+
+  .sidebar {
+    width: 70px;
+    background-color: #333;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 20px;
+
+    .logo {
+      width: 50px;
+      height: 50px;
+      margin-bottom: 20px;
+
+      img {
+        width: 100%;
+        height: auto;
+        border-radius: 50%;
+      }
+    }
+
+    .menu {
+      ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+
+        li {
+          margin: 20px 0;
+
+          a {
+            text-decoration: none;
+            color: white;
+            font-size: 14px;
+
+            &:hover {
+              color: #ffbf00;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .body {
+    flex: 1;
+
+    .main-content {
+      padding: 30px;
+
+      .page-title {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 20px;
+
+        p {
+          font-size: 24px;
+          font-weight: bold;
+          color: #333;
+        }
+
+        .add-button {
+          background-color: #ffbf00;
+          border: none;
+          border-radius: 50%;
+          width: 40px;
+          height: 40px;
+          font-size: 24px;
+          color: white;
+          cursor: pointer;
+
+          &:hover {
+            background-color: #e0a800;
+          }
+        }
+      }
+
+      .project-list {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 20px;
+
+        .project-card {
+          background: white;
+          border-radius: 8px;
+          cursor: pointer;
+          box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+          transition: box-shadow 0.3s ease, transform 0.2s;
+
+          &:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+          }
+
+          .card-header {
+            background: #f4f4f4;
+            padding: 16px;
+            border-radius: 8px 8px 0 0;
+            border-bottom: 2px solid #e0e0e0;
+
+            h3 {
+              font-size: 18px;
+              color: #333;
+              margin: 0;
+            }
+
+            p {
+              font-size: 14px;
+              color: #666;
+              margin: 4px 0 0 0;
+            }
+          }
+
+          .details {
+            padding: 16px;
+
+            .detail {
+              margin-bottom: 8px;
+
+              p {
+                font-size: 14px;
+                color: #555;
+                margin: 0;
+
+                strong {
+                  color: #333;
+                  font-weight: bold;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
