@@ -1,0 +1,74 @@
+<div class="container">
+    <!-- Overlay Background -->
+    <div class="overlay"></div>
+  
+    <!-- Modal Dialog -->
+    <div class="modal">
+      <div class="modal-header">
+        <h3>Create Planning Project</h3>
+        <button class="close-button" (click)="close()">✖</button>
+      </div>
+      <div class="modal-body">
+        <form [formGroup]="createProjectForm">
+          <!-- Project Name -->
+          <div class="form-group">
+            <label for="project-name">Project Name <span>*</span></label>
+            <input type="text" id="project-name" placeholder="Enter project name" formControlName="project_name" />
+            @if(getValidationErrors('project_name')) {
+              @if(getRequiredError('project_name')) {
+                <span class="error-text">
+                  Project Name is required.
+                </span>
+              }
+            }
+          </div>
+  
+          <!-- Project Description -->
+          <div class="form-group">
+            <label for="project-description">Project Description <span>*</span></label>
+            <textarea id="project-description" placeholder="Enter description"
+              formControlName="project_description"></textarea>
+              @if(getValidationErrors('project_description')) {
+                @if(getRequiredError('project_description')) {
+                  <span class="error-text">
+                    Project Description is required.
+                  </span>
+                }
+              }
+          </div>
+  
+          <!-- Co-planner -->
+          <div class="form-group">
+            <label for="co-planner">Co-planner</label>
+            <select id="co-planner"  formControlName="co_planner">
+              <option value="" disabled>Select a co-planner</option>
+              <option *ngFor="let coPlanner of coPlanners" [value]="coPlanner.id">{{ coPlanner.name }}</option>
+            </select>
+            <!-- <span class="error-text" *ngIf="createProjectForm.get('co_planner').hasError('required') && createProjectForm.get('co_planner').touched">
+              Co-planner is required.
+            </span> -->
+          </div>
+  
+          <!-- Budget -->
+          <div class="form-group">
+            <label for="co-planner">Project Budget</label>
+            <input type="number" id="project_budget" placeholder="Enter project budget"
+              formControlName="project_budget" />
+            @if(getValidationErrors('project_budget')) {
+              @if(getRequiredError('project_budget')) {
+                <span class="error-text">
+                  Project Budget is required.
+                </span>
+              }
+            }
+          </div>
+  
+          <!-- Create Button -->
+          <div class="form-actions text-center">
+            <button type="submit" class="create-button" (click)="update()"
+              [disabled]="createProjectForm.invalid">Create</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
