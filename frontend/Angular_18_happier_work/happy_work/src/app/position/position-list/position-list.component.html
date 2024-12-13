@@ -7,130 +7,140 @@
       <img src="assets/eworker.png" alt="Logo" />
     </div>
   </div>
-  
-    <div class="body">
-      <div class="main-content">
-  
-        <div class="page-container">
-          <!-- Header -->
-          <div class="page-header">
-            <div class="breadcrumb">
-              <a class="back-button" routerLink="/project/list">←</a>
-              <h2>Ahmadabad Growth</h2>
-            </div>
-            <button class="create-position-button" (click)="openAddPosition()">+ Create Position</button>
+
+  <div class="body">
+    <div class="main-content">
+
+      <div class="page-container">
+        <!-- Header -->
+        <div class="page-header">
+          <div class="breadcrumb">
+            <a class="back-button" routerLink="/project/list">←</a>
+            <h2>Ahmadabad Growth</h2>
           </div>
-  
-          <!-- Main Content -->
-          <div class="content">
-            <!-- Left Section: Table -->
-            <div class="table-section">
-              <div class="filter-container">
-                <!-- Search Box -->
-                <div class="search-box">
-                  <mat-form-field appearance="outline" floatLabel="always">
-                    <mat-label>Search by name</mat-label>
-                    <input matInput placeholder="Enter a name" [(ngModel)]="searchValue" (input)="applyFilters()" />
-                    <button mat-icon-button matSuffix aria-label="Clear" *ngIf="searchValue" (click)="clearSearch()">
-                      <mat-icon>close</mat-icon>
-                    </button>
-                  </mat-form-field>
-                </div>
-  
-                <!-- Designation Dropdown -->
-                <div class="designation-dropdown">
-                  <mat-form-field appearance="outline" floatLabel="always">
-                    <mat-label>Designation</mat-label>
-                    <mat-select [(value)]="selectedDesignation" (selectionChange)="applyFilters()">
-                      <mat-option [value]="">All</mat-option>
-                      <mat-option *ngFor="let designation of designations" [value]="designation">
-                        {{ designation }}
-                      </mat-option>
-                    </mat-select>
-                  </mat-form-field>
-                </div>
+          <button class="create-position-button" (click)="openAddPosition()">+ Create Position</button>
+        </div>
+
+        <!-- Main Content -->
+        <div class="content">
+          <!-- Left Section: Table -->
+          <div class="table-section">
+            <div class="filter-container">
+
+              <!-- Search Box -->
+              <div class="search-box">
+                <mat-form-field appearance="outline" floatLabel="always">
+                  <input matInput placeholder="Search by name" [(ngModel)]="searchValue" (input)="applyFilters()" />
+                  <button mat-icon-button matSuffix aria-label="Clear" *ngIf="searchValue" (click)="clearSearch()">
+                    <mat-icon>close</mat-icon>
+                  </button>
+                </mat-form-field>
               </div>
-  
-              <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
-  
-                <!-- Designation Column -->
-                <ng-container matColumnDef="designation">
-                  <th mat-header-cell *matHeaderCellDef> Designation </th>
-                  <td mat-cell *matCellDef="let element"> {{ element.designation }} </td>
-                </ng-container>
-  
-                <!-- Department Column -->
-                <ng-container matColumnDef="department">
-                  <th mat-header-cell *matHeaderCellDef> Department </th>
-                  <td mat-cell *matCellDef="let element"> {{ element.department_name
-                }} </td>
-                </ng-container>
-  
-                <!-- Budget Column -->
-                <ng-container matColumnDef="budget">
-                  <th mat-header-cell *matHeaderCellDef> Budget </th>
-                  <td mat-cell *matCellDef="let element"> {{ element.budget }} </td>
-                </ng-container>
-  
-                <!-- Location Column -->
-                <ng-container matColumnDef="location">
-                  <th mat-header-cell *matHeaderCellDef> Location </th>
-                  <td mat-cell *matCellDef="let element"> {{ element.location }} </td>
-                </ng-container>
-  
-                <!-- Updated By Column -->
-                <ng-container matColumnDef="updatedBy">
-                  <th mat-header-cell *matHeaderCellDef> Updated By </th>
-                  <td mat-cell *matCellDef="let element"> {{ element.updated_by_name }} </td>
-                </ng-container>
-  
-                <!-- Last Updated Column -->
-                <ng-container matColumnDef="lastUpdated">
-                  <th mat-header-cell *matHeaderCellDef> Last Updated </th>
-                  <td mat-cell *matCellDef="let element"> {{ element.updated_at }} </td>
-                </ng-container>
-  
-                <!-- Actions Column -->
-                <ng-container matColumnDef="actions">
-                  <th mat-header-cell *matHeaderCellDef> Actions </th>
-                  <td mat-cell *matCellDef="let element">
-                    <button mat-icon-button color="warn" aria-label="Delete" (click)="deletePosition(element.id)">
-                      <mat-icon>delete</mat-icon>
-                    </button>
-                  </td>
-                </ng-container>
-  
-                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-                <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-              </table>
-              <mat-paginator [pageSizeOptions]="[10, 20, 50]" showFirstLastButtons></mat-paginator>
+
+              <!-- Designation Dropdown -->
+              <div class="designation-dropdown">
+                <mat-form-field appearance="outline" floatLabel="always">
+                  <mat-select [(value)]="selectedDesignation" (selectionChange)="applyFilters()">
+                    <mat-option value="ALL">All</mat-option>
+                    <mat-option *ngFor="let designation of designations" [value]="designation">
+                      {{ designation }}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
             </div>
-  
-            <!-- Right Section: Budget Chart -->
-            <div class="budget-section">
-              <div class="budget-header">
-                <h3>Budget</h3>
-                <button class="edit-button">Edit</button>
+
+            <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 table">
+
+              <!-- Designation Column -->
+              <ng-container matColumnDef="designation">
+                <th mat-header-cell *matHeaderCellDef> Designation </th>
+                <td mat-cell *matCellDef="let element"> {{ element.designation }} </td>
+              </ng-container>
+
+              <!-- Department Column -->
+              <ng-container matColumnDef="department">
+                <th mat-header-cell *matHeaderCellDef> Department </th>
+                <td mat-cell *matCellDef="let element"> {{ element.department_name
+                  }} </td>
+              </ng-container>
+
+              <!-- Budget Column -->
+              <ng-container matColumnDef="budget">
+                <th mat-header-cell *matHeaderCellDef> Budget </th>
+                <td mat-cell *matCellDef="let element"> {{ element.budget }} </td>
+              </ng-container>
+
+              <!-- Location Column -->
+              <ng-container matColumnDef="location">
+                <th mat-header-cell *matHeaderCellDef> Location </th>
+                <td mat-cell *matCellDef="let element"> {{ element.location }} </td>
+              </ng-container>
+
+              <!-- Updated By Column -->
+              <ng-container matColumnDef="updatedBy">
+                <th mat-header-cell *matHeaderCellDef> Updated By </th>
+                <td mat-cell *matCellDef="let element"> {{ element.updated_by_name }} </td>
+              </ng-container>
+
+              <!-- Last Updated Column -->
+              <ng-container matColumnDef="lastUpdated">
+                <th mat-header-cell *matHeaderCellDef> Last Updated </th>
+                <td mat-cell *matCellDef="let element"> {{ element.updated_at }} </td>
+              </ng-container>
+
+              <!-- Actions Column -->
+              <ng-container matColumnDef="actions">
+                <th mat-header-cell *matHeaderCellDef> Actions </th>
+                <td mat-cell *matCellDef="let element">
+                  <button mat-icon-button color="warn" aria-label="Delete" (click)="deletePosition(element.id)">
+                    <mat-icon>delete</mat-icon>
+                  </button>
+                </td>
+              </ng-container>
+
+              <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+              <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+            </table>
+            <mat-paginator class="paginator" [pageSizeOptions]="[10, 20, 50]" showFirstLastButtons></mat-paginator>
+          </div>
+
+          <div class="budget-section">
+            <div class="budget-header">
+              <h3>Budget</h3>
+              <button class="edit-button">Edit</button>
+            </div>
+
+            <div class="chart-container">
+              <canvas *ngIf="isBrowser" baseChart [data]="doughnutChartData" [type]="'doughnut'"
+                [options]="doughnutChartOptions"></canvas>
+            </div>
+            <div class="chart-legend">
+              <div *ngFor="let label of doughnutChartLabels; let i = index" class="legend-item">
+                <div class="legend-color" [style.background-color]="backgroundColor[i]"></div>
+                <span>{{ label }}</span>
+                <span class="legend-percentage">{{ doughnutChartData.datasets[0].data[i] }} %</span>
               </div>
-              <div class="chart-container">
-                <canvas id="budgetChart" style="width: 100%; height: 400px;"></canvas>
-              </div>
-              <div class="chart-legend">
-                <div class="legend-item" *ngFor="let item of chartData">
-                  <div class="legend-color" [style.background-color]="item.color"></div>
-                  <span>{{ item.label }}</span>
-                  <span class="legend-percentage">{{ item.percentage }}%</span>
-                </div>
-              </div>
-              <div class="separator"></div>
-              <div class="budget-summary">
-                <span class="total_budget"><p>Total budget:</p><p>₹ 2 Cr</p></span>
-                <span><p>Used:</p><p>₹ 1.5 Cr</p></span>
-                <span><p>Left:</p><p>₹ 50 L</p></span>
-              </div>
+            </div>
+            <hr class="separator">
+            <div class="budget-summary">
+              <span class="total_budget">
+                <p>Total budget: </p>
+                <p> ₹2 Cr</p>
+              </span>
+              <span>
+                <p>Used: </p>
+                <p> ₹1.5 Cr</p>
+              </span>
+              <span>
+                <p>Left: </p>
+                <p> ₹50 L</p>
+              </span>
             </div>
           </div>
         </div>
       </div>
     </div>
   </div>
+
+</div>
