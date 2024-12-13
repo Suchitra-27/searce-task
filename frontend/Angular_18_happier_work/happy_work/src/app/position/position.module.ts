@@ -12,10 +12,9 @@ import { MatInputModule } from '@angular/material/input';
 import { MatIconButton } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { CreatePositionComponent } from './create-position/create-position.component';
-
+import { BaseChartDirective } from 'ng2-charts';
 
 const routes: Routes = [
-
   { path: 'list', component: PositionListComponent },
 ];
 
@@ -36,6 +35,7 @@ const routes: Routes = [
     MatFormFieldModule,
     MatIconButton,
     ReactiveFormsModule,
+    BaseChartDirective,
     RouterModule.forChild(routes)
   ]
 })
