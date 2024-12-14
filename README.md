@@ -79,7 +79,7 @@ Installation
 
 Navigate to the Angular directory:
 
-cd frontend
+cd projectname
 
 Install dependencies:
 
@@ -92,6 +92,7 @@ Start the development server:
 ng serve
 
 Open your browser and navigate to:
+http://localhost:4200/
 
 # needful packages
 UI materials 
